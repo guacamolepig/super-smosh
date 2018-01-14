@@ -1,0 +1,3 @@
+GAME_CAPTION = 'super smosh!'
+SCREEN_SIZE = (800, 800)
+SCREEN_FPS = 60
