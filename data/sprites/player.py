@@ -62,7 +62,9 @@ class Player(pg.sprite.Sprite):
         self.vel.x = pt.update_velx(self)
         self.vel.y = pt.update_vely(self)
 
-        self.pos += self.vel + 0.5 * self.acc
+        self.pos.x = pt.update_posx(self)
+        self.pos.y = pt.update_posy(self)
+
 
         self.rect.midbottom = self.pos
 

@@ -31,3 +31,11 @@ def update_vely(player):
     if abs(player.vel.y) < 0.1:
         player.vel.y = 0
     return player.vel.y
+
+def update_posx(player):
+    player.pos.x += player.vel.x + 0.5 * player.acc.x
+    return player.pos.x
+
+def update_posy(player):
+    player.pos.y += player.vel.y + 0.5 * player.acc.y
+    return player.pos.y

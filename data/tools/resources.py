@@ -2,8 +2,6 @@ import os
 
 import pygame as pg
 
-from filetools import list_folders, list_files
-
 class Resources:
 
     def __init__(self, root):
@@ -44,8 +42,8 @@ class Resource:
     @property
     def _data(self):
         data = {}
-        for filepath in list_files(self._directory):
-            d = File(filepath)
+        for filename in os.listdir(self._directory):
+            d = File(os.path.join(self._directory, filename))
             data[d.name] = d
         return data
 
