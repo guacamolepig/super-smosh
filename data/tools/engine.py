@@ -17,9 +17,10 @@ class Engine:
     def setup(self):
         self.clock = pg.time.Clock()
         self.screen = pg.display.get_surface()
-        self.all_sprites = pg.sprite.Group()
         self.rsc = rsc.Resources(self.resources_directory)
         self.all_sprites = sprites.load_all_sprites(self)
+        pg.mixer.music.load(self.rsc.music.Intro.filepath)
+        pg.mixer.music.play(-1)
 
     def mainloop(self):
         while not self.done:

@@ -1,12 +1,13 @@
 import pygame as pg
 from ..settings import *
+from ..sprites import player_tools as pt
 vec = pg.math.Vector2
 
 
 class Player(pg.sprite.Sprite):
     def __init__(self, game):
-        self.groups = game.all_sprites
-        pg.sprite.Sprite.__init__(self, self.groups)
+
+        pg.sprite.Sprite.__init__(self)
         self.game = game
         self.walking = False
         self.jumping = False
@@ -20,32 +21,24 @@ class Player(pg.sprite.Sprite):
         self.vel = vec(0, 0)
         self.acc = vec(0, 0)
 
-        self.acc_rate = 1
+        self.acc_rate = 2
         self.vel_friction = -0.1
 
     def update(self):
         self.animate()
-        self.calculate()
+        self.calculate_position()
 
-    def calculate(self):
+    def calculate_position(self):
         keys = pg.key.get_pressed()
 
-        self.acc = vec(0, 0)
-        if keys[pg.K_RIGHT]:
-            self.acc.x = self.acc_rate
-        if keys[pg.K_LEFT]:
-            self.acc.x = -self.acc_rate
+        self.acc.x = pt.update_accx(self, keys)
+        self.acc.y = pt.update_accy(self, keys)
 
-        self.acc.x += self.vel.x * self.vel_friction
-        print(self.acc.x)
-        self.vel += self.acc
-        if abs(self.vel.x) < 0.1:
-            self.vel.x = 0
+        self.vel.x = pt.update_velx(self)
+        self.vel.y = pt.update_vely(self)
+
         self.pos += self.vel + 0.5 * self.acc
-        if self.pos.x > SCREEN_SIZE[0] + self.rect.width / 2:
-            self.pos.x = 0 - self.rect.width / 2
-        if self.pos.x < 0 - self.rect.width / 2:
-            self.pos.x = SCREEN_SIZE[1] + self.rect.width / 2
+
         self.rect.midbottom = self.pos
 
     def animate(self):
