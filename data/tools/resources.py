@@ -8,7 +8,7 @@ class Resources:
 
     def __init__(self, root):
         self.music_directory = os.path.join(root, 'music')
-        self.graphics_directory = os.path.join(root, 'graphics')
+        self.graphics_directory = os.path.join(root, 'graphics/png')
         self.sounds_directory = os.path.join(root, 'sounds')
 
     @property

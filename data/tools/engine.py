@@ -20,7 +20,7 @@ class Engine:
         self.rsc = rsc.Resources(self.resources_directory)
         self.all_sprites = sprites.load_all_sprites(self)
         pg.mixer.music.load(self.rsc.music.Intro.filepath)
-        pg.mixer.music.play(-1)
+        # pg.mixer.music.play(-1)
 
     def mainloop(self):
         while not self.done:

@@ -4,9 +4,9 @@ vec = pg.math.Vector2
 
 def update_accx(player, keys):
     player.acc.x = 0
-    if keys[pg.K_RIGHT]:
+    if keys[player.K_RIGHT]:
         player.acc.x = player.acc_rate
-    if keys[pg.K_LEFT]:
+    if keys[player.K_LEFT]:
         player.acc.x = -player.acc_rate
     player.acc.x += player.vel.x * player.vel_friction
     return player.acc.x
@@ -19,9 +19,9 @@ def update_velx(player):
 
 def update_accy(player, keys):
     player.acc.y = 0
-    if keys[pg.K_DOWN]:
+    if keys[player.K_DOWN]:
         player.acc.y = player.acc_rate
-    if keys[pg.K_UP]:
+    if keys[player.K_UP]:
         player.acc.y = -player.acc_rate
     player.acc.y += player.vel.y * player.vel_friction
     return player.acc.y
